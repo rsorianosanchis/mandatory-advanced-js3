@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bulma/css/bulma.css';
+import {Switch,Route} from 'react-router-dom';
+//
+import {Header} from './labbComponents/header.js';
+import {Main} from './sidor/main.js';
+import {Register} from './sidor/register.js';
+import {Login} from './sidor/Login.js';
+import {TodoLista} from './sidor/todoLista.js';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header/>
+        <Switch>
+          <Route exact path='/' component={Main}/>
+          <Route exact path='/register' component={Register}/>
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/todoLista' component={TodoLista}/>
+        </Switch>
       </div>
     );
   }
