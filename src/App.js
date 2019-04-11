@@ -6,7 +6,7 @@ import {Switch,Route} from 'react-router-dom';
 import {Header} from './labbComponents/header.js';
 import {Main} from './sidor/main.js';
 import {Register} from './sidor/register.js';
-import {Login} from './sidor/Login.js';
+import {Login} from './sidor/login.js';
 import {TodoLista} from './sidor/todoLista.js';
 
 
@@ -14,7 +14,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>
         <Switch>
           <Route exact path='/' component={Main}/>
           <Route exact path='/register' component={Register}/>
