@@ -8,6 +8,7 @@ import {Main} from './sidor/main.js';
 import {Register} from './sidor/register.js';
 import {Login} from './sidor/login.js';
 import {TodoLista} from './sidor/todoLista.js';
+export const API_ROOT= 'http://ec2-13-53-32-89.eu-north-1.compute.amazonaws.com:3000';
 
 
 class App extends Component {

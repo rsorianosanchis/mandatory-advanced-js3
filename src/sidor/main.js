@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import {token$,updateToken} from '../auth';
 import {Header} from '../labbComponents/header.js';
 import {Register} from './register.js';
 import {Login} from './login.js';
@@ -14,35 +15,12 @@ export class Main extends Component {
 
   // communication with backend functions
   /**************************************************************/
-  _usrRegister = (email,password)=>{
-    axios.post(`${API_ROOT}/register`,{email, password})
-    .then(response=>{console.log(response);})
-    .catch(error=>{
-      console.log(error);
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'skriv här error msg',
-      })
-    })
-  }
+
+  
   /**************************************************************/
-  _usrLogin = (email,password)=>{
-    axios.post(`${API_ROOT}/auth`,{email, password})
-    .then(token=>{console.log(token);})
-    .catch(error=>{
-      console.log(error);
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'skriv här error msg',
-      })
-    })
-  }
-  /**************************************************************/
-  _getLista = (token)=>{
-    console.log(token);
-    axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+token}})
+  _getLista = ({token$})=>{/*token här kommer från magasinet*/
+    console.log({token$});
+    axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+{token$}}})
     .then(response=>{console.log(response);})
     .catch(error=>{
       console.log(error);
