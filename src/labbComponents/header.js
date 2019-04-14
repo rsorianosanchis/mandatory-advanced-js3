@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export class Header extends Component {
 
@@ -7,6 +8,7 @@ export class Header extends Component {
 
     return(
       <>
+        <h1>HEADER</h1>
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <a className="navbar-item" href="https://bulma.io">
@@ -28,16 +30,15 @@ export class Header extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <a className="button is-primary">
+                  <Link className="button is-primary">
                     <strong>Sign up</strong>
-                  </a>
-                  <a className="button is-light">
+                  </Link>
+                  <Link className="button is-light">
                     Log in
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
-
         </nav>
       </>
     )

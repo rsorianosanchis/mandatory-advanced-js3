@@ -15,6 +15,7 @@ export class Login extends Component {
   render(){
     return(
       <React.Fragment>
+        <h1>LOGIN</h1>
         <form onSubmit={this._handleLoginSumbit}>
           <div className="field">
             <p className="control has-icons-left has-icons-right">

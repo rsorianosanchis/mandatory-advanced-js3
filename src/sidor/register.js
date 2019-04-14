@@ -11,7 +11,7 @@ export class Register extends Component {
     console.log('tetsting ');
     console.log(this.state.usrMail,this.state.password);
   }
-  
+
 
   _createToken = ()=>{
     const token = jwt.sign({a:10},'secret');
@@ -21,6 +21,7 @@ export class Register extends Component {
   render(){
     return(
       <React.Fragment>
+        <h1>REGISTER</h1>
         <form onSubmit={this._handleLoginSumbit}>
           <div className="field">
             <p className="control has-icons-left has-icons-right">

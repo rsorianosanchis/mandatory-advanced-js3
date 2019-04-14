@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import API_ROOT from '../App.js';
 
 export const _usrLogin = (email,password,fn)=>{
-  axios.post(`${API_ROOT}/auth`,{email, password})
+  axios.post(`${API_ROOT}/auth`,{email: email,password: password})
   .then(response=>{
     //response with status 200 ok
     //and token

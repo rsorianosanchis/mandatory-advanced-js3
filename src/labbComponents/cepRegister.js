@@ -3,10 +3,10 @@ import Swal from 'sweetalert2';
 import API_ROOT from '../App.js';
 
 export const _usrRegister = (email,password)=>{
-  axios.post(`${API_ROOT}/register`,{email, password})
+  axios.post(`${API_ROOT}/register`,{email: email,password: password})
   .then(response=>{
-    console.log(response);
-    //status cose 201 if ok
+    console.log(response.data);
+    //status code 201 if ok
     if (true) {
       Swal.fire({
         position: 'top-end',

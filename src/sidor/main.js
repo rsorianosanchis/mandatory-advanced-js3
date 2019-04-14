@@ -12,38 +12,12 @@ export class Main extends Component {
   constructor(props){
     super(props)
   }
-
-  // communication with backend functions
-  /**************************************************************/
-
-  
-  /**************************************************************/
-  _getLista = ({token$})=>{/*token här kommer från magasinet*/
-    console.log({token$});
-    axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+{token$}}})
-    .then(response=>{console.log(response);})
-    .catch(error=>{
-      console.log(error);
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'skriv här error msg',
-      })
-    })
-  }
-  /**************************************************************/
-  _postNyTodo = (myTodo)=>{
-    axios.post(`${API_ROOT}/todos`,{content: myTodo})
-  }
-  /**************************************************************/
-  _de
-  //
-
   render(){
     return(
       <>
-      <Header usrMail='pepito'/>
-      <Register/>
+      <h1>MAIN</h1>
+
+
       </>
     )
   }
