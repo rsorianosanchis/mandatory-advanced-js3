@@ -15,7 +15,8 @@ export class Main extends Component {
   render(){
     return(
       <>
-      <h1>MAIN</h1>
+    
+      <Header/>
 
 
       </>

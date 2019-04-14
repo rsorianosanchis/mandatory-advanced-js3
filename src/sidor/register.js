@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 //import jwt from 'jsonwebtoken';
 import {_usrRegister} from '../labbComponents/cepRegister.js';
+import {Header} from '../labbComponents/header.js';
 import {API_ROOT} from '../App.js';
 
 export class Register extends Component {
@@ -16,12 +17,11 @@ export class Register extends Component {
     console.log(this.state.usrMail,this.state.password);
     _usrRegister(API_ROOT,this.state.usrMail,this.state.password)
   }
-
-
   render(){
     return(
       <React.Fragment>
-        <h1>REGISTER</h1>
+        <Header
+          usrMail= {this.state.usrMail}/>
         <form onSubmit={this._handleLoginSumbit}>
           <div className="field">
             <p className="control has-icons-left has-icons-right">
