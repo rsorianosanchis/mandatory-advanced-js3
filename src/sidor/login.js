@@ -6,10 +6,12 @@ export class Login extends Component {
   state = {
     usrMail: '',
     password: ''};
+
   _handleLoginSumbit=(e)=>{
     e.preventDefault();
     console.log('tetsting ');
     console.log(this.state.usrMail,this.state.password);
+
   }
   //
   render(){

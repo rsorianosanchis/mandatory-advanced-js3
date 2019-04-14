@@ -1,13 +1,14 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import API_ROOT from '../App.js';
 
-export const _usrRegister = (email,password)=>{
-  axios.post(`${API_ROOT}/register`,{email: email,password: password})
+
+export const _usrRegister = (url,email,password)=>{
+  console.log('kontroll com');
+  axios.post(`${url}/register`,{email: email,password: password})
   .then(response=>{
-    console.log(response.data);
+    console.log(response);
     //status code 201 if ok
-    if (true) {
+    if (response.status) {
       Swal.fire({
         position: 'top-end',
         type: 'success',

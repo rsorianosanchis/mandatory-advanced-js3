@@ -26,7 +26,7 @@ export const _usrLogin = (email,password,fn)=>{
     console.log(error);
     Swal.fire({
       type: 'error',
-      title: 'Oops...',
+      title: 'Anmäl dig innan LogIn',
       text: `Login Error`+ error,
     })
   })

@@ -1,22 +1,22 @@
 import React,{Component} from 'react';
-import jwt from 'jsonwebtoken';
+//import jwt from 'jsonwebtoken';
+import {_usrRegister} from '../labbComponents/cepRegister.js';
+import {API_ROOT} from '../App.js';
 
 export class Register extends Component {
   state = {
     usrMail: '',
-    password: ''};
+    password: '',
+    registered: false
+  };
 
   _handleLoginSumbit=(e)=>{
     e.preventDefault();
     console.log('tetsting ');
     console.log(this.state.usrMail,this.state.password);
+    _usrRegister(API_ROOT,this.state.usrMail,this.state.password)
   }
 
-
-  _createToken = ()=>{
-    const token = jwt.sign({a:10},'secret');
-    console.log(token);
-  }
 
   render(){
     return(

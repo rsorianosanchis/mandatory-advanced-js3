@@ -4,15 +4,16 @@ import {Link} from 'react-router-dom';
 export class Header extends Component {
 
   render(){
-    const {usrMail}= this.props;
+    const {usrMail,isRegistered}= this.props;
+
 
     return(
       <>
         <h1>HEADER</h1>
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
-              <img src="" width="112" height="28"/>
+            <a className="navbar-item" href="#">
+              <img src="../public/todoimg.js" width="112" height="28"/>
             </a>
           </div>
           <div id="navbarBasicExample" className="navbar-menu">
@@ -30,10 +31,11 @@ export class Header extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="buttons">
-                  <Link className="button is-primary">
+                  {isRegistered ? null
+                  :<Link to={'/register'} className="button is-primary">
                     <strong>Sign up</strong>
-                  </Link>
-                  <Link className="button is-light">
+                  </Link>}
+                  <Link to={'/login'} className="button is-light">
                     Log in
                   </Link>
                 </div>
