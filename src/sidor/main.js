@@ -15,10 +15,8 @@ export class Main extends Component {
   render(){
     return(
       <>
-    
-      <Header/>
-
-
+        <Header/>
+        <legend>Please 'Sign Up' if you are not a registered member.</legend>
       </>
     )
   }

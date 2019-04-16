@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 
 export const _usrRegister = (url,email,password)=>{
-  console.log('kontroll com');
+  console.log('kontroll communication');
   axios.post(`${url}/register`,{email: email,password: password})
   .then(response=>{
     console.log(response);
@@ -17,7 +17,8 @@ export const _usrRegister = (url,email,password)=>{
         timer: 1500
       })
     }
-    //return response;
+    console.log('eooooooooooooo');
+    return true;
   })
   .catch(error=>{
     console.log(error);
@@ -26,5 +27,6 @@ export const _usrRegister = (url,email,password)=>{
       title: 'Oops...',
       text: 'skriv här error msg',
     })
+    return false
   })
 }

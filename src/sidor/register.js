@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 //import jwt from 'jsonwebtoken';
-import {_usrRegister} from '../labbComponents/cepRegister.js';
 import {Header} from '../labbComponents/header.js';
 import {API_ROOT} from '../App.js';
+
 
 export class Register extends Component {
   state = {
@@ -13,10 +15,34 @@ export class Register extends Component {
 
   _handleLoginSumbit=(e)=>{
     e.preventDefault();
-    console.log('tetsting ');
+    this.setState({registered: false})
     console.log(this.state.usrMail,this.state.password);
-    _usrRegister(API_ROOT,this.state.usrMail,this.state.password)
+    axios.post(`${API_ROOT}/register`,{email: this.state.usrMail,password: this.state.password})
+    .then(response=>{
+      console.log(response);
+      //status code 201 if ok
+      if (response.status) {
+        Swal.fire({
+          position: 'top-end',
+          type: 'success',
+          title: 'Registration done !',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      this.setState({registered: true})
+    })
+    .catch(error=>{
+      console.log(error);
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'skriv här error msg',
+      })
+    })
   }
+
+
   render(){
     return(
       <React.Fragment>
