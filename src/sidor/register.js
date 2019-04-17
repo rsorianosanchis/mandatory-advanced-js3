@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 //import jwt from 'jsonwebtoken';
+import {Redirect} from 'react-router-dom';
 import {Header} from '../labbComponents/header.js';
 import {API_ROOT} from '../App.js';
 
@@ -15,7 +16,6 @@ export class Register extends Component {
 
   _handleLoginSumbit=(e)=>{
     e.preventDefault();
-    this.setState({registered: false})
     console.log(this.state.usrMail,this.state.password);
     axios.post(`${API_ROOT}/register`,{email: this.state.usrMail,password: this.state.password})
     .then(response=>{
@@ -41,13 +41,12 @@ export class Register extends Component {
       })
     })
   }
-
-
   render(){
     return(
-      <React.Fragment>
-        <Header
-          usrMail= {this.state.usrMail}/>
+      this.state.registered
+      ?<Redirect to='/'/>
+      :<React.Fragment>
+        <Header/>
         <form onSubmit={this._handleLoginSumbit}>
           <div className="field">
             <p className="control has-icons-left has-icons-right">

@@ -14,10 +14,10 @@ export class Main extends Component {
   }
   render(){
     return(
-      <>
+      <React.Fragment>
         <Header/>
-        <legend>Please 'Sign Up' if you are not a registered member.</legend>
-      </>
+        <legend>Please go to<strong> Register </strong>if you are not member.</legend>
+      </React.Fragment>
     )
   }
 }
