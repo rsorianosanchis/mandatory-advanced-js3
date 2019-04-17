@@ -71,7 +71,10 @@ export class Login extends Component {
           logged = {this.state.logged}
         />
       {this.state.logged === true && this.state.serverMail !==''
-          ?<Redirect to='/todoLista'/>
+          ?<Redirect to={{
+            pathname: '/todoLista',
+            state: {isLogged: true}
+          }}/>
           :<form onSubmit={this._usrLogin}>
             <div className="field">
               <p className="control has-icons-left has-icons-right">

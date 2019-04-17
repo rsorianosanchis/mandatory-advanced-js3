@@ -3,24 +3,21 @@ import {Link} from 'react-router-dom';
 import thingstodo from './thingstodo.jpg';
 
 export class Header extends Component {
-  // state = {
-  //   userName: '',
-  //   logged: false
-  // }
+
 
   _logOutLogic =(e)=>{
     console.log('logOut pressed');
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.usrMail !== this.props.usrMail){
-      console.log('should in header');
-      console.log(nextProps.usrMail);
-      console.log(this.props.usrMail);
-      console.log(this.props.logged);
-      return true
-    }
-    return false
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (nextProps.usrMail !== this.props.usrMail){
+  //     console.log('should in header');
+  //     console.log(nextProps.usrMail);
+  //     console.log(this.props.usrMail);
+  //     console.log(this.props.logged);
+  //     return true
+  //   }
+  //   return false
+  // }
 
   render(){
     return(
