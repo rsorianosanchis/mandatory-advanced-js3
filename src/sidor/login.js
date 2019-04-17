@@ -73,7 +73,10 @@ export class Login extends Component {
       {this.state.logged === true && this.state.serverMail !==''
           ?<Redirect to={{
             pathname: '/todoLista',
-            state: {isLogged: true}
+            state: {
+              isLogged: true,
+              userLogged: this.state.serverMail
+            }
           }}/>
           :<form onSubmit={this._usrLogin}>
             <div className="field">
