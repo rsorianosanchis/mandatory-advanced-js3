@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import 'bulma/css/bulma.css';
 //import jwt from 'jsonwebtoken';
 import {Redirect} from 'react-router-dom';
 import {Header} from '../labbComponents/header.js';
@@ -47,7 +48,7 @@ export class Register extends Component {
       ?<Redirect to='/'/>
       :<React.Fragment>
         <Header/>
-        <form onSubmit={this._handleLoginSumbit}>
+        <form onSubmit={this._handleLoginSumbit}>  
           <div className="field">
             <p className="control has-icons-left has-icons-right">
               <input

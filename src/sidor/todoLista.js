@@ -6,11 +6,28 @@ import {token$,updateToken} from '../auth';
 import {Header} from '../labbComponents/header.js';
 
 export class TodoLista extends Component {
+  state={
+    todosList: [],
+    newTodo: ''
+  }
+
+  _postNyTodo = (e)=>{
+    e.preventDefault();
+    console.log(this.state.newTodo);
+    axios.post(`${API_ROOT}/todos`,
+      {content: this.state.newTodo},
+      {headers: {Authorization: `Bearer `+token$._value}})
+    .then(response=>{console.log(response);})
+    .catch(error=>{console.log(error);})
+
+  }
 
   componentDidMount() {
+    console.log('componentDidMount');
     axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+token$._value}})
     .then(response=>{
-      console.log(response);
+      console.log(response.data.todos);
+      this.setState({todosList: response.data.todos})
       //render response lista
     })
     .catch(error=>{
@@ -22,7 +39,6 @@ export class TodoLista extends Component {
       })
     })
 
-
   }
   render(){
     console.log(token$);
@@ -33,6 +49,34 @@ export class TodoLista extends Component {
           logged={this.props.location.state.isLogged}
           usrMail={this.props.location.state.userLogged}/>
         <h1>TODOLISTA</h1>
+          <form onSubmit={this._postNyTodo}>
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="new Todo"
+                  onChange={(e)=>(this.setState({newTodo: e.target.value}))}/>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-envelope"></i>
+                </span>
+                <span className="icon is-small is-right">
+                  <i className="fas fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div className="field">
+              <p className="control">
+                <button className="button is-success">
+                  Send
+                </button>
+              </p>
+            </div>
+          </form>
+          <ul>
+            
+          </ul>
+
       </React.Fragment>
     )
   }

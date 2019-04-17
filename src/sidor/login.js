@@ -15,6 +15,7 @@ export class Login extends Component {
     serverPassword:'',
     logged: false
   };
+
   //
   _usrLogin = (e)=>{
     e.preventDefault();
