@@ -53,14 +53,14 @@ export class Login extends Component {
     })
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.logged !== nextState.logged){
-      return true
-    }
-    console.log(`logged prev is ${this.state.logged}`);
-    console.log(`logged prev is ${nextState.logged}`);
-    return false
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.logged !== nextState.logged){
+  //     return true
+  //   }
+  //   console.log(`logged prev is ${this.state.logged}`);
+  //   console.log(`logged prev is ${nextState.logged}`);
+  //   return false
+  // }
   //
   render(){
     return(
