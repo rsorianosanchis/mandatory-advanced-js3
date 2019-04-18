@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bulma/css/bulma.css';
 import {Switch,Route} from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faCheckSquare, faCoffee,faEnvelope,faLock} from '@fortawesome/free-solid-svg-icons';
+import {library } from '@fortawesome/fontawesome-svg-core';
+import {fab } from '@fortawesome/free-brands-svg-icons';
+import {faEnvelope,faLock,faKey,faUnlock} from '@fortawesome/free-solid-svg-icons';
 //
 import {Header} from './labbComponents/header.js';
 import {Main} from './sidor/main.js';
@@ -28,5 +28,11 @@ class App extends Component {
     );
   }
 }
-library.add(fab, faCheckSquare, faCoffee,faEnvelope,faLock);
+library.add(
+  fab,
+  faEnvelope,
+  faLock,
+  faKey,
+  faUnlock
+);
 export default App;

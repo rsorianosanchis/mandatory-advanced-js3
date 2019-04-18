@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import 'bulma/css/bulma.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import jwt from 'jsonwebtoken';
 import {Redirect} from 'react-router-dom';
@@ -58,7 +57,7 @@ export class Register extends Component {
                 placeholder="Email"
                 onChange={(e)=>(this.setState({usrMail: e.target.value}))}/>
               <span className="icon is-small is-left">
-                <FontAwesomeIcon icon='lock' />
+                <FontAwesomeIcon icon='envelope'/>
               </span>
             </p>
           </div>
@@ -70,8 +69,7 @@ export class Register extends Component {
                 placeholder="Password"
                 onChange={e=>{this.setState({password: e.target.value})}}/>
               <span className="icon is-small is-left">
-                <FontAwesomeIcon icon="envelope" />
-                <i className="fas fa-lock"></i>
+                <FontAwesomeIcon icon="key" />
               </span>
             </p>
           </div>

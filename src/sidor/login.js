@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Swal from 'sweetalert2';
 import {API_ROOT} from '../App.js';
 import {Header} from '../labbComponents/header.js';
@@ -42,7 +43,6 @@ export class Login extends Component {
       this.setState({serverMail: strServer.email});
       this.setState({serverPassword: strServer.password});
       this.setState({logged: true});
-      //return <Redirect to='/todoLista'/>
     })
     .catch(error=>{
       console.log(error);
@@ -53,25 +53,11 @@ export class Login extends Component {
       })
     })
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.state.logged !== nextState.logged){
-  //     return true
-  //   }
-  //   console.log(`logged prev is ${this.state.logged}`);
-  //   console.log(`logged prev is ${nextState.logged}`);
-  //   return false
-  // }
-  //
   render(){
     return(
       <React.Fragment>
-        <Header
-          usrMail= {this.state.serverMail}
-          password = {this.state.serverPassword}
-          logged = {this.state.logged}
-        />
-      {this.state.logged === true && this.state.serverMail !==''
+        <Header/>
+        {this.state.logged === true && this.state.serverMail !==''
           ?<Redirect to={{
             pathname: '/todoLista',
             state: {
@@ -88,10 +74,7 @@ export class Login extends Component {
                   placeholder="Email"
                   onChange={(e)=>(this.setState({formMail: e.target.value}))}/>
                 <span className="icon is-small is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
-                <span className="icon is-small is-right">
-                  <i className="fas fa-check"></i>
+                  <FontAwesomeIcon icon='envelope'/>
                 </span>
               </p>
             </div>
@@ -103,7 +86,7 @@ export class Login extends Component {
                   placeholder="Password"
                   onChange={e=>{this.setState({formPassword: e.target.value})}}/>
                 <span className="icon is-small is-left">
-                  <i className="fas fa-lock"></i>
+                  <FontAwesomeIcon icon="key" />
                 </span>
               </p>
             </div>
@@ -120,3 +103,7 @@ export class Login extends Component {
     )
   }
 }
+
+// usrMail= {this.state.serverMail}
+// password = {this.state.serverPassword}
+// logged = {this.state.logged}

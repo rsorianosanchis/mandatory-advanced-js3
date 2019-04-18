@@ -8,7 +8,6 @@ import {Header} from '../labbComponents/header.js';
 export class TodoLista extends Component {
   state={
     todosList: [],
-    newTodo: ''
   }
 
   _postNyTodo = (e)=>{
@@ -17,7 +16,12 @@ export class TodoLista extends Component {
     axios.post(`${API_ROOT}/todos`,
       {content: this.state.newTodo},
       {headers: {Authorization: `Bearer `+token$._value}})
-    .then(response=>{console.log(response);})
+    .then(response=>{
+      console.log(response.data.todo.content);
+      this.setState({todosList: [...this.state.todosList,response.data.todo]});
+      let field = document.getElementById('todoIdInput');
+      field.value = '';
+    })
     .catch(error=>{console.log(error);})
 
   }
@@ -27,7 +31,8 @@ export class TodoLista extends Component {
     axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+token$._value}})
     .then(response=>{
       console.log(response.data.todos);
-      this.setState({todosList: response.data.todos})
+      this.setState({todosList: response.data.todos});
+
       //render response lista
     })
     .catch(error=>{
@@ -53,6 +58,7 @@ export class TodoLista extends Component {
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <input
+                  id='todoIdInput'
                   className="input"
                   type="text"
                   placeholder="new Todo"
@@ -74,7 +80,14 @@ export class TodoLista extends Component {
             </div>
           </form>
           <ul>
-            
+            {this.state.todosList.map(todo=>{
+              return(
+                <div className="notification is-info" key={todo.id}>
+                  <button className="delete"></button>
+                  {todo.content}
+                </div>
+              )
+            })}
           </ul>
 
       </React.Fragment>

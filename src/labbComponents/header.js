@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import thingstodo from './thingstodo.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class Header extends Component {
 
@@ -35,10 +36,10 @@ export class Header extends Component {
                   <strong>Register</strong>
                 </Link>}
                 {this.props.logged ?<Link to={'/'} onClick={this._logOutLogic} className="button is-light">
-                  Log Out
+                  <FontAwesomeIcon icon="unlock" style={{marginRight: 5}}/>Log Out
                 </Link>:
                 <Link to={'/login'} className="button is-light">
-                  Log in
+                    <FontAwesomeIcon icon="lock" style={{marginRight: 5}}/> Log in
                 </Link>
                 }
               </div>
