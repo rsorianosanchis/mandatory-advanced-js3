@@ -2,18 +2,12 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import thingstodo from './thingstodo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+//
 export class Header extends Component {
-
-
-  _logOutLogic =(e)=>{
-    console.log('logOut pressed');
-  }
-
+  //
   render(){
     return(
       <React.Fragment>
-        <h1>HEADER</h1>
         <nav style={{backgroundColor: '#aeb4c1'}} className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
               <img src={thingstodo} alt='decorative' height="50" />
@@ -22,7 +16,7 @@ export class Header extends Component {
             <div className="navbar-start">
               {this.props.logged ?
                 <p className="navbar-item">
-                  Current user is: {this.props.usrMail}
+                  <legend>Användaren i sessionen är: <strong>{this.props.usrMail}</strong></legend>
                 </p>
                 :null}
                 <hr className="navbar-divider"/>
@@ -33,13 +27,13 @@ export class Header extends Component {
               <div className="buttons">
                 {this.props.logged ? null
                 :<Link to={'/register'} className="button is-primary">
-                  <strong>Register</strong>
+                  <strong>Användarregistrering</strong>
                 </Link>}
-                {this.props.logged ?<Link to={'/'} onClick={this._logOutLogic} className="button is-light">
-                  <FontAwesomeIcon icon="unlock" style={{marginRight: 5}}/>Log Out
+                {this.props.logged ?<Link to={'/'} className="button is-light">
+                  <FontAwesomeIcon icon="unlock" style={{marginRight: 5}}/>Stäng Sessionen
                 </Link>:
                 <Link to={'/login'} className="button is-light">
-                    <FontAwesomeIcon icon="lock" style={{marginRight: 5}}/> Log in
+                    <FontAwesomeIcon icon="lock" style={{marginRight: 5}}/>Öppna Sessionen
                 </Link>
                 }
               </div>

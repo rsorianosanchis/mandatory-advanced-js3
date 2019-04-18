@@ -1,21 +1,12 @@
 import React,{Component} from 'react';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import 'bulma/css/bulma.css';
-import {token$,updateToken} from '../auth';
 import {Header} from '../labbComponents/header.js';
-import {Register} from './register.js';
-import {Login} from './login.js';
-import {TodoLista} from './todoLista.js';
 
-const API_ROOT= 'http://ec2-13-53-32-89.eu-north-1.compute.amazonaws.com:3000';
 export class Main extends Component {
-
   render(){
     return(
       <React.Fragment>
         <Header/>
-        <legend>Please go to<strong> Register </strong>if you are not member.</legend>
+        <legend>Vänligen tryck på <strong> Användarregistrering</strong> om du inte är medlem.</legend>
       </React.Fragment>
     )
   }

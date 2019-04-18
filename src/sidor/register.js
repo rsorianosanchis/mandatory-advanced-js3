@@ -2,33 +2,30 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import jwt from 'jsonwebtoken';
 import {Redirect} from 'react-router-dom';
 import {Header} from '../labbComponents/header.js';
 import {API_ROOT} from '../App.js';
-
-
+//
 export class Register extends Component {
   state = {
     usrMail: '',
     password: '',
     registered: false
   };
-
+  //
   _handleLoginSumbit=(e)=>{
     e.preventDefault();
     console.log(this.state.usrMail,this.state.password);
     axios.post(`${API_ROOT}/register`,{email: this.state.usrMail,password: this.state.password})
     .then(response=>{
       console.log(response);
-      //status code 201 if ok
       if (response.status) {
         Swal.fire({
           position: 'top-end',
           type: 'success',
-          title: 'Registration done !',
+          title: `Konto till ${this.state.usrMail} skapat !`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         })
       }
       this.setState({registered: true})
@@ -38,7 +35,7 @@ export class Register extends Component {
       Swal.fire({
         type: 'error',
         title: 'Oops...',
-        text: 'skriv här error msg',
+        text: 'Detta konto existerar inte',
       })
     })
   }
@@ -54,7 +51,7 @@ export class Register extends Component {
               <input
                 className="input"
                 type="email"
-                placeholder="Email"
+                placeholder="E-post"
                 onChange={(e)=>(this.setState({usrMail: e.target.value}))}/>
               <span className="icon is-small is-left">
                 <FontAwesomeIcon icon='envelope'/>
@@ -66,7 +63,7 @@ export class Register extends Component {
               <input
                 className="input"
                 type="password"
-                placeholder="Password"
+                placeholder="Lösenord"
                 onChange={e=>{this.setState({password: e.target.value})}}/>
               <span className="icon is-small is-left">
                 <FontAwesomeIcon icon="key" />
@@ -76,7 +73,7 @@ export class Register extends Component {
           <div className="field">
             <p className="control">
               <button className="button is-success">
-                Submit
+                Bekräfta
               </button>
             </p>
           </div>

@@ -71,7 +71,7 @@ export class Login extends Component {
                 <input
                   className="input"
                   type="email"
-                  placeholder="Email"
+                  placeholder="E-post"
                   onChange={(e)=>(this.setState({formMail: e.target.value}))}/>
                 <span className="icon is-small is-left">
                   <FontAwesomeIcon icon='envelope'/>
@@ -83,7 +83,7 @@ export class Login extends Component {
                 <input
                   className="input"
                   type="password"
-                  placeholder="Password"
+                  placeholder="Lösenord"
                   onChange={e=>{this.setState({formPassword: e.target.value})}}/>
                 <span className="icon is-small is-left">
                   <FontAwesomeIcon icon="key" />
@@ -93,7 +93,7 @@ export class Login extends Component {
             <div className="field">
               <p className="control">
                 <button className="button is-success">
-                  Enter
+                  Logga In
                 </button>
               </p>
             </div>

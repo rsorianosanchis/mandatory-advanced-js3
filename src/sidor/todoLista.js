@@ -2,12 +2,13 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import {API_ROOT} from '../App.js';
-import {token$,updateToken} from '../auth';
+import {token$} from '../auth';
 import {Header} from '../labbComponents/header.js';
 
 export class TodoLista extends Component {
   state={
     todosList: [],
+    newTodo:''
   }
   //
   _postNyTodo = (e)=>{
@@ -21,6 +22,7 @@ export class TodoLista extends Component {
       this.setState({todosList: [...this.state.todosList,response.data.todo]});
       let field = document.getElementById('todoIdInput');
       field.value = '';
+      this.setState({newTodo: ''});
     })
     .catch(error=>{console.log(error);})
   }
@@ -30,15 +32,17 @@ export class TodoLista extends Component {
     console.log(e.target.id);
     axios.delete(`${API_ROOT}/todos/${e.target.id}`,
       {headers: {Authorization: `Bearer `+token$._value}}
-    ).then(console.log('borrado')
+    ).then(response=>{
+      console.log('borrado')
+      this._getTodos()
+    }
 
     ).catch(
 
     )
   }
   //
-  componentDidMount() {
-    console.log('componentDidMount');
+  _getTodos = ()=>{
     axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+token$._value}})
     .then(response=>{
       console.log(response.data.todos);
@@ -54,11 +58,14 @@ export class TodoLista extends Component {
         text: 'skriv här error msg',
       })
     })
-
+  }
+  //
+  componentDidMount() {
+    console.log('componentDidMount');
+    this._getTodos();
   }
   render(){
-    console.log(token$);
-    console.log(token$._value);
+    //console.log(token$._value);
     return(
       <React.Fragment>
         <Header
