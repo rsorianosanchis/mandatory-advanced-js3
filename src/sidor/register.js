@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import 'bulma/css/bulma.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import jwt from 'jsonwebtoken';
 import {Redirect} from 'react-router-dom';
 import {Header} from '../labbComponents/header.js';
@@ -48,7 +49,7 @@ export class Register extends Component {
       ?<Redirect to='/'/>
       :<React.Fragment>
         <Header/>
-        <form onSubmit={this._handleLoginSumbit}>  
+        <form onSubmit={this._handleLoginSumbit}>
           <div className="field">
             <p className="control has-icons-left has-icons-right">
               <input
@@ -57,10 +58,7 @@ export class Register extends Component {
                 placeholder="Email"
                 onChange={(e)=>(this.setState({usrMail: e.target.value}))}/>
               <span className="icon is-small is-left">
-                <i className="fas fa-envelope"></i>
-              </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
+                <FontAwesomeIcon icon='lock' />
               </span>
             </p>
           </div>
@@ -72,6 +70,7 @@ export class Register extends Component {
                 placeholder="Password"
                 onChange={e=>{this.setState({password: e.target.value})}}/>
               <span className="icon is-small is-left">
+                <FontAwesomeIcon icon="envelope" />
                 <i className="fas fa-lock"></i>
               </span>
             </p>
