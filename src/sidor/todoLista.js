@@ -9,7 +9,7 @@ export class TodoLista extends Component {
   state={
     todosList: [],
   }
-
+  //
   _postNyTodo = (e)=>{
     e.preventDefault();
     console.log(this.state.newTodo);
@@ -23,9 +23,20 @@ export class TodoLista extends Component {
       field.value = '';
     })
     .catch(error=>{console.log(error);})
-
   }
+  //
+  _deleteTodo = (e) =>{
+    e.preventDefault();
+    console.log(e.target.id);
+    axios.delete(`${API_ROOT}/todos/${e.target.id}`,
+      {headers: {Authorization: `Bearer `+token$._value}}
+    ).then(console.log('borrado')
 
+    ).catch(
+
+    )
+  }
+  //
   componentDidMount() {
     console.log('componentDidMount');
     axios.get(`${API_ROOT}/todos`,{headers:{Authorization: `Bearer `+token$._value}})
@@ -83,7 +94,7 @@ export class TodoLista extends Component {
             {this.state.todosList.map(todo=>{
               return(
                 <div className="notification is-info" key={todo.id}>
-                  <button className="delete"></button>
+                  <button id={todo.id} onClick={this._deleteTodo} className="delete"></button>
                   {todo.content}
                 </div>
               )
