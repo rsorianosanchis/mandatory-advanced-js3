@@ -6,7 +6,8 @@ import Swal from 'sweetalert2';
 import {API_ROOT} from '../App.js';
 import {Header} from '../labbComponents/header.js';
 import {updateToken} from '../auth.js';
-
+import '../style/login.css';
+import {Helmet} from 'react-helmet';
 
 export class Login extends Component {
   state = {
@@ -16,7 +17,6 @@ export class Login extends Component {
     serverPassword:'',
     logged: false
   };
-
   //
   _usrLogin = (e)=>{
     e.preventDefault();
@@ -48,14 +48,14 @@ export class Login extends Component {
       console.log(error);
       Swal.fire({
         type: 'error',
-        title: 'Anmäl dig innan LogIn',
-        text: `Login Error`+ error,
+        title: 'E-post eller Lösenord fel !! ',
+        text: `Testa med andra data `+ error,
       })
     })
   }
   render(){
     return(
-      <React.Fragment>
+      <div className='containerLogin'>
         <Header/>
         {this.state.logged === true && this.state.serverMail !==''
           ?<Redirect to={{
@@ -66,6 +66,9 @@ export class Login extends Component {
             }
           }}/>
           :<form onSubmit={this._usrLogin}>
+            <Helmet>
+              <title>Login</title>
+            </Helmet>
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <input
@@ -99,11 +102,7 @@ export class Login extends Component {
             </div>
           </form>
         }
-      </React.Fragment>
+      </div>
     )
   }
 }
-
-// usrMail= {this.state.serverMail}
-// password = {this.state.serverPassword}
-// logged = {this.state.logged}

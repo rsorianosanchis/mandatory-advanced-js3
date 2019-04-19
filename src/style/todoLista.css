@@ -1,0 +1,20 @@
+.containerTodoLista{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+form{
+  padding-top: 10px;
+  width: 330px;
+}
+
+ul{
+  padding-top: 10px;
+  width: 330px;
+}
+
+.contentText{
+  overflow: auto;
+}

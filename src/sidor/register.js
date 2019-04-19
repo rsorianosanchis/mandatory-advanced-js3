@@ -6,6 +6,8 @@ import {Redirect} from 'react-router-dom';
 import {Header} from '../labbComponents/header.js';
 import {API_ROOT} from '../App.js';
 import '../style/register.css';
+import {Helmet} from 'react-helmet';
+
 //
 export class Register extends Component {
   state = {
@@ -36,7 +38,7 @@ export class Register extends Component {
       Swal.fire({
         type: 'error',
         title: 'Oops...',
-        text: 'Detta konto existerar inte',
+        text: 'Det här kontot är inte tillgängligt.',
       })
     })
   }
@@ -45,42 +47,43 @@ export class Register extends Component {
       this.state.registered
       ?<Redirect to='/'/>
     :<div className='containerRegister'>
+        <Helmet>
+          <title>Register</title>
+        </Helmet>
         <Header/>
-        <div className='containerForm'>
-          <form onSubmit={this._handleLoginSumbit}>
-            <div className="field">
-              <p className="control has-icons-left has-icons-right">
-                <input
-                  className="input"
-                  type="email"
-                  placeholder="E-post"
-                  onChange={(e)=>(this.setState({usrMail: e.target.value}))}/>
-                <span className="icon is-small is-left">
-                  <FontAwesomeIcon icon='envelope'/>
-                </span>
-              </p>
-            </div>
-            <div className="field">
-              <p className="control has-icons-left">
-                <input
-                  className="input"
-                  type="password"
-                  placeholder="Lösenord"
-                  onChange={e=>{this.setState({password: e.target.value})}}/>
-                <span className="icon is-small is-left">
-                  <FontAwesomeIcon icon="key" />
-                </span>
-              </p>
-            </div>
-            <div className="field">
-              <p className="control">
-                <button className="button is-success">
-                  Bekräfta
-                </button>
-              </p>
-            </div>
-          </form>
-        </div>
+        <form onSubmit={this._handleLoginSumbit}>
+          <div className="field">
+            <p className="control has-icons-left has-icons-right">
+              <input
+                className="input"
+                type="email"
+                placeholder="E-post"
+                onChange={(e)=>(this.setState({usrMail: e.target.value}))}/>
+              <span className="icon is-small is-left">
+                <FontAwesomeIcon icon='envelope'/>
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control has-icons-left">
+              <input
+                className="input"
+                type="password"
+                placeholder="Lösenord"
+                onChange={e=>{this.setState({password: e.target.value})}}/>
+              <span className="icon is-small is-left">
+                <FontAwesomeIcon icon="key" />
+              </span>
+            </p>
+          </div>
+          <div className="field">
+            <p className="control">
+              <button className="button is-success">
+                Bekräfta
+              </button>
+            </p>
+          </div>
+        </form>
       </div>
     )
   }

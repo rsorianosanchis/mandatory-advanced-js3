@@ -4,6 +4,9 @@ import Swal from 'sweetalert2';
 import {API_ROOT} from '../App.js';
 import {token$} from '../auth';
 import {Header} from '../labbComponents/header.js';
+import '../style/todoLista.css';
+import {Helmet} from 'react-helmet';
+
 
 export class TodoLista extends Component {
   state={
@@ -67,11 +70,13 @@ export class TodoLista extends Component {
   render(){
     //console.log(token$._value);
     return(
-      <React.Fragment>
+      <div className='containerTodoLista'>
+        <Helmet>
+          <title>TodoLista</title>
+        </Helmet>
         <Header
           logged={this.props.location.state.isLogged}
           usrMail={this.props.location.state.userLogged}/>
-        <h1>TODOLISTA</h1>
           <form onSubmit={this._postNyTodo}>
             <div className="field">
               <p className="control has-icons-left has-icons-right">
@@ -92,7 +97,7 @@ export class TodoLista extends Component {
             <div className="field">
               <p className="control">
                 <button className="button is-success">
-                  Send
+                  Ladda Upp
                 </button>
               </p>
             </div>
@@ -102,13 +107,12 @@ export class TodoLista extends Component {
               return(
                 <div className="notification is-info" key={todo.id}>
                   <button id={todo.id} onClick={this._deleteTodo} className="delete"></button>
-                  {todo.content}
+                  <p className='contentText'>{todo.content}</p>
                 </div>
               )
             })}
           </ul>
-
-      </React.Fragment>
+      </div>
     )
   }
 }
