@@ -1,0 +1,16 @@
+
+.containerMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.legend{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.margins{
+  flex-basis: 10%;
+}

@@ -1,13 +1,19 @@
 import React,{Component} from 'react';
 import {Header} from '../labbComponents/header.js';
+import '../style/main.css';
 
 export class Main extends Component {
   render(){
     return(
-      <React.Fragment>
+      <div className='containerMain'>
         <Header/>
-        <legend>Vänligen tryck på <strong> Användarregistrering</strong> om du inte är medlem.</legend>
-      </React.Fragment>
+        <div className='legend'>
+          <div className='margins'></div>
+          <p>Vänligen tryck på <strong> Användarregistrering</strong> om du inte är medlem.</p>
+          <div className='margins'></div>
+        </div>
+      </div>
+
     )
   }
 }

@@ -1,0 +1,15 @@
+.containerRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.containerForm{
+  align-self: center;
+
+}
+form{
+  padding-top: 15px;
+
+}

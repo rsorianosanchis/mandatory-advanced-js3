@@ -2,15 +2,16 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import thingstodo from './thingstodo.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../style/header.css';
 //
 export class Header extends Component {
   //
   render(){
     return(
-      <React.Fragment>
-        <nav style={{backgroundColor: '#aeb4c1'}} className="navbar" role="navigation" aria-label="main navigation">
+      <div className='headerContainer'>
+        <nav  className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-              <img src={thingstodo} alt='decorative' height="50" />
+              <img src={thingstodo} alt='decorative'/>
           </div>
           <div id="navbarBasicExample" >
             <div className="navbar-start">
@@ -40,7 +41,7 @@ export class Header extends Component {
             </div>
           </div>
         </nav>
-      </React.Fragment>
+      </div>
     )
   }
 }

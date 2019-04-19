@@ -1,0 +1,21 @@
+
+.headerContainer{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navbar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.navbar-brand{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  opacity: 0.9;
+}
